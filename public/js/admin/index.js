@@ -23847,9 +23847,9 @@
 	var Layout = __webpack_require__(272);
 	var Home = __webpack_require__(282);
 	var EditPosts = __webpack_require__(284);
-	var EditPost = __webpack_require__(292);
-	var AddPost = __webpack_require__(296);
-	var EditPageInfo = __webpack_require__(298);
+	var EditPost = __webpack_require__(293);
+	var AddPost = __webpack_require__(297);
+	var EditPageInfo = __webpack_require__(299);
 	
 	var createElement = function createElement(Component, props) {
 	    return React.createElement(Component, props);
@@ -29433,7 +29433,7 @@
 	var _require3 = __webpack_require__(288),
 	    _deletePost = _require3.deletePost;
 	
-	var dateFormatter = __webpack_require__(338);
+	var dateFormatter = __webpack_require__(292);
 	
 	var PostPresentational = function PostPresentational(_ref) {
 	    var author = _ref.author,
@@ -29791,11 +29791,44 @@
 
 /***/ },
 /* 292 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
-	module.exports = __webpack_require__(293);
+	function dateConditionalPlural(num, type) {
+	    if (num === 1) {
+	        return num + " " + type + " ago";
+	    } else {
+	        return num + " " + type + "s ago";
+	    }
+	}
+	
+	function timeSince(ms) {
+	    var seconds = Math.floor((Date.now() - ms) / 1000);
+	    var interval = Math.floor(seconds / 31536000);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'year');
+	    }
+	    interval = Math.floor(seconds / 2592000);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'month');
+	    }
+	    interval = Math.floor(seconds / 86400);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'day');
+	    }
+	    interval = Math.floor(seconds / 3600);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'hour');
+	    }
+	    interval = Math.floor(seconds / 60);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'minute');
+	    }
+	    return dateConditionalPlural(Math.floor(seconds), 'second');
+	}
+	
+	module.exports = timeSince;
 
 /***/ },
 /* 293 */
@@ -29803,10 +29836,18 @@
 
 	'use strict';
 	
+	module.exports = __webpack_require__(294);
+
+/***/ },
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var React = __webpack_require__(1);
-	var PostEditor = __webpack_require__(294);
+	var PostEditor = __webpack_require__(295);
 	
 	var _require = __webpack_require__(178),
 	    connect = _require.connect;
@@ -29853,15 +29894,15 @@
 	module.exports = wrapper(EditPost);
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(295);
+	module.exports = __webpack_require__(296);
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29968,21 +30009,21 @@
 	module.exports = PostEditor;
 
 /***/ },
-/* 296 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	module.exports = __webpack_require__(297);
-
-/***/ },
 /* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
+	module.exports = __webpack_require__(298);
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
 	var React = __webpack_require__(1);
-	var PostEditor = __webpack_require__(294);
+	var PostEditor = __webpack_require__(295);
 	
 	var _require = __webpack_require__(178),
 	    connect = _require.connect;
@@ -30022,15 +30063,15 @@
 	module.exports = wrapper(AddPost);
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(299);
+	module.exports = __webpack_require__(300);
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30167,85 +30208,6 @@
 	var wrapper = connect(mapStateToProps, mapDispatchToProps);
 	
 	module.exports = wrapper(EditPageInfo);
-
-/***/ },
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	function dateConditionalPlural(num, type) {
-	    if (num === 1) {
-	        return num + " " + type + " ago";
-	    } else {
-	        return num + " " + type + "s ago";
-	    }
-	}
-	
-	function timeSince(ms) {
-	    var seconds = Math.floor((Date.now() - ms) / 1000);
-	    var interval = Math.floor(seconds / 31536000);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'year');
-	    }
-	    interval = Math.floor(seconds / 2592000);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'month');
-	    }
-	    interval = Math.floor(seconds / 86400);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'day');
-	    }
-	    interval = Math.floor(seconds / 3600);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'hour');
-	    }
-	    interval = Math.floor(seconds / 60);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'minute');
-	    }
-	    return dateConditionalPlural(Math.floor(seconds), 'second');
-	}
-	
-	module.exports = timeSince;
 
 /***/ }
 /******/ ]);

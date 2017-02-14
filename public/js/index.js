@@ -48,7 +48,7 @@
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
-	var pageRouter = __webpack_require__(300);
+	var pageRouter = __webpack_require__(301);
 	var Provider = __webpack_require__(178).Provider;
 	
 	var _require = __webpack_require__(189),
@@ -56,10 +56,10 @@
 	    applyMiddleware = _require.applyMiddleware,
 	    compose = _require.compose;
 	
-	var reducer = __webpack_require__(326);
+	var reducer = __webpack_require__(327);
 	var thunkMiddleware = __webpack_require__(216).default;
 	var store = createStore(reducer, window.PROPS, compose(applyMiddleware(thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
-	var injectTapEventPlugin = __webpack_require__(327);
+	var injectTapEventPlugin = __webpack_require__(328);
 	injectTapEventPlugin();
 	
 	ReactDOM.render(React.createElement(
@@ -29005,7 +29005,47 @@
 /* 289 */,
 /* 290 */,
 /* 291 */,
-/* 292 */,
+/* 292 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	function dateConditionalPlural(num, type) {
+	    if (num === 1) {
+	        return num + " " + type + " ago";
+	    } else {
+	        return num + " " + type + "s ago";
+	    }
+	}
+	
+	function timeSince(ms) {
+	    var seconds = Math.floor((Date.now() - ms) / 1000);
+	    var interval = Math.floor(seconds / 31536000);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'year');
+	    }
+	    interval = Math.floor(seconds / 2592000);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'month');
+	    }
+	    interval = Math.floor(seconds / 86400);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'day');
+	    }
+	    interval = Math.floor(seconds / 3600);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'hour');
+	    }
+	    interval = Math.floor(seconds / 60);
+	    if (interval >= 1) {
+	        return dateConditionalPlural(interval, 'minute');
+	    }
+	    return dateConditionalPlural(Math.floor(seconds), 'second');
+	}
+	
+	module.exports = timeSince;
+
+/***/ },
 /* 293 */,
 /* 294 */,
 /* 295 */,
@@ -29013,7 +29053,8 @@
 /* 297 */,
 /* 298 */,
 /* 299 */,
-/* 300 */
+/* 300 */,
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29023,11 +29064,11 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	var React = __webpack_require__(1);
-	var Layout = __webpack_require__(301);
-	var Home = __webpack_require__(310);
-	var Post = __webpack_require__(318);
-	var Author = __webpack_require__(320);
-	var About = __webpack_require__(322);
+	var Layout = __webpack_require__(302);
+	var Home = __webpack_require__(311);
+	var Post = __webpack_require__(319);
+	var Author = __webpack_require__(321);
+	var About = __webpack_require__(323);
 	
 	var _require = __webpack_require__(219),
 	    Router = _require.Router,
@@ -29058,15 +29099,15 @@
 	);
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(302);
+	module.exports = __webpack_require__(303);
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29074,9 +29115,9 @@
 	var React = __webpack_require__(1);
 	var Link = __webpack_require__(219).Link;
 	var connect = __webpack_require__(178).connect;
-	var path = __webpack_require__(303);
-	var Header = __webpack_require__(304);
-	var style = __webpack_require__(308);
+	var path = __webpack_require__(304);
+	var Header = __webpack_require__(305);
+	var style = __webpack_require__(309);
 	var Index = function Index(props) {
 	    var customProps = props.custom;
 	    return React.createElement(
@@ -29123,7 +29164,7 @@
 	module.exports = wrapper(Index);
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -29354,22 +29395,22 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(305);
+	module.exports = __webpack_require__(306);
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
 	var Link = __webpack_require__(219).Link;
-	var styles = __webpack_require__(306);
+	var styles = __webpack_require__(307);
 	
 	var Header = function Header(props) {
 	    console.log('header', styles);
@@ -29404,13 +29445,13 @@
 	module.exports = Header;
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(307);
+	var content = __webpack_require__(308);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(277)(content, {});
@@ -29430,7 +29471,7 @@
 	}
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(276)();
@@ -29449,13 +29490,13 @@
 	};
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(309);
+	var content = __webpack_require__(310);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(277)(content, {});
@@ -29475,7 +29516,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(276)();
@@ -29494,15 +29535,15 @@
 	};
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(311);
+	module.exports = __webpack_require__(312);
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29510,7 +29551,7 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var connect = __webpack_require__(178).connect;
-	var PostsList = __webpack_require__(312);
+	var PostsList = __webpack_require__(313);
 	
 	var Home = function Home(_ref) {
 	    var posts = _ref.posts;
@@ -29534,15 +29575,15 @@
 	module.exports = wrapper(Home);
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(313);
+	module.exports = __webpack_require__(314);
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29552,7 +29593,7 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var connect = __webpack_require__(178).connect;
-	var Post = __webpack_require__(314);
+	var Post = __webpack_require__(315);
 	
 	var Posts = function Posts(_ref) {
 	    var posts = _ref.posts;
@@ -29569,23 +29610,23 @@
 	module.exports = Posts;
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(315);
+	module.exports = __webpack_require__(316);
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
 	var Link = __webpack_require__(219).Link;
-	var style = __webpack_require__(316);
-	var dateFormatter = __webpack_require__(338);
+	var style = __webpack_require__(317);
+	var dateFormatter = __webpack_require__(292);
 	var Post = function Post(_ref) {
 	    var title = _ref.title,
 	        author = _ref.author,
@@ -29632,13 +29673,13 @@
 	module.exports = Post;
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(317);
+	var content = __webpack_require__(318);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(277)(content, {});
@@ -29658,7 +29699,7 @@
 	}
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(276)();
@@ -29679,15 +29720,15 @@
 	};
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(319);
+	module.exports = __webpack_require__(320);
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29697,7 +29738,7 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var connect = __webpack_require__(178).connect;
-	var Post = __webpack_require__(314);
+	var Post = __webpack_require__(315);
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	    return _extends({}, state.posts[ownProps.params.postId]);
 	};
@@ -29706,15 +29747,15 @@
 	module.exports = wrapper(Post);
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(321);
+	module.exports = __webpack_require__(322);
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29722,7 +29763,7 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(32);
 	var connect = __webpack_require__(178).connect;
-	var PostsList = __webpack_require__(312);
+	var PostsList = __webpack_require__(313);
 	
 	var AuthorPage = function AuthorPage(_ref) {
 	    var authorName = _ref.authorName,
@@ -29751,21 +29792,21 @@
 	module.exports = wrapper(AuthorPage);
 
 /***/ },
-/* 322 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	module.exports = __webpack_require__(323);
-
-/***/ },
 /* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
+	module.exports = __webpack_require__(324);
+
+/***/ },
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
 	var React = __webpack_require__(1);
-	var Page = __webpack_require__(324);
+	var Page = __webpack_require__(325);
 	
 	var _require = __webpack_require__(178),
 	    connect = _require.connect;
@@ -29781,15 +29822,15 @@
 	module.exports = About;
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(325);
+	module.exports = __webpack_require__(326);
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29815,7 +29856,7 @@
 	module.exports = Page;
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29863,11 +29904,11 @@
 	module.exports = reducer;
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(8);
-	var defaultClickRejectionStrategy = __webpack_require__(328);
+	var defaultClickRejectionStrategy = __webpack_require__(329);
 	
 	var alreadyInjected = false;
 	
@@ -29889,14 +29930,14 @@
 	  alreadyInjected = true;
 	
 	  __webpack_require__(42).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(329)(shouldRejectClick)
+	    'TapEventPlugin':       __webpack_require__(330)(shouldRejectClick)
 	  });
 	};
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -29907,7 +29948,7 @@
 
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -29931,14 +29972,14 @@
 	
 	"use strict";
 	
-	var EventConstants = __webpack_require__(330);
+	var EventConstants = __webpack_require__(331);
 	var EventPluginUtils = __webpack_require__(44);
 	var EventPropagators = __webpack_require__(41);
 	var SyntheticUIEvent = __webpack_require__(75);
-	var TouchEventUtils = __webpack_require__(331);
+	var TouchEventUtils = __webpack_require__(332);
 	var ViewportMetrics = __webpack_require__(76);
 	
-	var keyOf = __webpack_require__(332);
+	var keyOf = __webpack_require__(333);
 	var topLevelTypes = EventConstants.topLevelTypes;
 	
 	var isStartish = EventPluginUtils.isStartish;
@@ -30084,7 +30125,7 @@
 
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports) {
 
 	/**
@@ -30180,7 +30221,7 @@
 	module.exports = EventConstants;
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports) {
 
 	/**
@@ -30228,7 +30269,7 @@
 
 
 /***/ },
-/* 332 */
+/* 333 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30265,52 +30306,6 @@
 	};
 	
 	module.exports = keyOf;
-
-/***/ },
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	function dateConditionalPlural(num, type) {
-	    if (num === 1) {
-	        return num + " " + type + " ago";
-	    } else {
-	        return num + " " + type + "s ago";
-	    }
-	}
-	
-	function timeSince(ms) {
-	    var seconds = Math.floor((Date.now() - ms) / 1000);
-	    var interval = Math.floor(seconds / 31536000);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'year');
-	    }
-	    interval = Math.floor(seconds / 2592000);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'month');
-	    }
-	    interval = Math.floor(seconds / 86400);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'day');
-	    }
-	    interval = Math.floor(seconds / 3600);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'hour');
-	    }
-	    interval = Math.floor(seconds / 60);
-	    if (interval >= 1) {
-	        return dateConditionalPlural(interval, 'minute');
-	    }
-	    return dateConditionalPlural(Math.floor(seconds), 'second');
-	}
-	
-	module.exports = timeSince;
 
 /***/ }
 /******/ ]);

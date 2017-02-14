@@ -1,7 +1,7 @@
 var path = require('path');
 var postCSSConfig = require('./config/postcss.config');
 var srcPath = path.join(__dirname, 'src');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
     entry: {
         './public/js/index': './src/pageApp/main.js',
