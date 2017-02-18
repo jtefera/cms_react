@@ -5,7 +5,8 @@ var srcPath = path.join(__dirname, 'src');
 module.exports = {
     entry: {
         './public/js/index': './src/pageApp/main.js',
-        './public/js/admin/index': './src/adminApp/main.js'
+        './public/js/admin/index': './src/adminApp/main.js',
+        './public/js/login/index': './src/login/main.js'
     },
     output: {
         path: __dirname,

@@ -20,6 +20,11 @@ const Sidebar = (props) => {
                     Edit basic info
                 </Link>
             </div>
+            <div>
+                <a href='/logout'>
+                    Logout
+                </a>
+            </div>
         </div>
     );
 };
