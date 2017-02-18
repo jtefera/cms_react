@@ -24,4 +24,14 @@ const Post = ({title, author, authorId, date, content, id}) => {
         </div>
     );
 }
+
+Post.propTypes = {
+    title: React.PropTypes.string.isRequired,
+    author: React.PropTypes.string.isRequired,
+    authorId: React.PropTypes.string.isRequired,
+    date: React.PropTypes.number.isRequired,
+    content: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired
+};
+
 module.exports = Post;

@@ -14,4 +14,9 @@ const Posts = ({posts}) => {
         </div>
     );
 };
+
+Posts.propTypes = {
+    posts: React.PropTypes.array
+}
+
 module.exports = Posts;
