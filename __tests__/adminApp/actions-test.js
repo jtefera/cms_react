@@ -1,10 +1,12 @@
 const proxyquire = require('proxyquire');
 const MockFirebase = require('mockfirebase').MockFirebase;
 let firebaseMock;
-const actions = proxyquire('../../src/adminApp/actions',
+/*const actions = proxyquire('../../src/adminApp/actions',{
     firebase: function(url) {
         return (firebaseMock = new MockFirebase(url));
     }
-);
+});*/
 
-describe('')
+describe('Test', () => {
+    it('should work');
+})
