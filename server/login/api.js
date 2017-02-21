@@ -60,7 +60,7 @@ loginRouter.post('/', function (req, res) {
                 message: 'Succesufully logged',
                 user
             });
-        })
+        }) 
         .catch(function errorLogin(error) {
             console.log(error);
             res.status(400).json({
