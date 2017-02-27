@@ -1,6 +1,6 @@
 const React = require('react');
 const {connect} = require('react-redux');
-const style = require('./Layout.css');
+const style = require('./style.css');
 const Sidebar = require('../../presentations/Sidebar');
 
 const Layout = (props) => {
@@ -20,6 +20,10 @@ const Layout = (props) => {
                 href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
                 integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
                 crossOrigin="anonymous"/>
+            <link 
+                rel="stylesheet" 
+                href="/css/style.css" 
+                />
         </head>
         <body>
             <div className={style.container + ' container'}>
@@ -33,7 +37,8 @@ const Layout = (props) => {
             <script dangerouslySetInnerHTML={{
                 __html: 'window.PROPS=' + JSON.stringify(customProps)
             }} />
-            <script src='/js/admin/index.js' type='text/javascript' />
+            <script type='text/javascript' src='/js/vendor/index.js' />
+            <script type='text/javascript' src='/js/admin/index.js' />            
         </body>
         </html>
     );

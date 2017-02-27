@@ -1,6 +1,6 @@
 const React = require('react');
 const Link = require('react-router').Link;
-const style = require('./Post.css');
+const style = require('./style.css');
 const dateFormatter = require('../../../shared/utils/dateFormatter');
 const Post = ({title, author, authorId, date, content, id}) => {
     const authorEl = (author) ? 

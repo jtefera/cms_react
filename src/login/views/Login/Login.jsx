@@ -80,6 +80,10 @@ class Login extends Component {
                     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
                     integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
                     crossOrigin="anonymous"/>
+                <link 
+                    rel="stylesheet" 
+                    href="/css/style.css" 
+                    />
                 </head>
                 <body>
                     <div className={style.container + ' container'}>
@@ -121,9 +125,8 @@ class Login extends Component {
                             logout: this.props.logout
                         })
                     }} />
-                    <script
-                        src='/js/login/index.js'
-                    />
+                    <script type='text/javascript' src='/js/vendor/index.js' />
+                    <script type='text/javascript' src='/js/login/index.js' />
                 </body>
             </html>
         );

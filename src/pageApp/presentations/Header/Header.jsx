@@ -1,6 +1,6 @@
 const React = require('react');
 const Link = require('react-router').Link;
-const styles = require('./Header.css');
+const styles = require('./style.css');
 
 const Header = (props) => {
     console.log('header', styles);

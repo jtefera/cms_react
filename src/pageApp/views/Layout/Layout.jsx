@@ -3,12 +3,16 @@ const Link = require('react-router').Link;
 const connect = require('react-redux').connect;
 const path = require('path');
 const Header = require('../../presentations/Header/');
-const style = require('./Layout.css');
+const style = require('./style.css');
 const Index = (props) => {
     const customProps = props.custom;
     return (<html>
         <head>
             <title>{customProps.pageInfo.title}</title>
+            <link 
+                    rel="stylesheet" 
+                    href="/css/style.css" 
+                    />
         </head>
         <body className={style.body}>
             <div className={style.container}>
@@ -20,6 +24,7 @@ const Index = (props) => {
             <script dangerouslySetInnerHTML={{
                 __html: 'window.PROPS=' + JSON.stringify(customProps),
             }} />
+            <script type='text/javascript' src='/js/vendor/index.js' />
             <script type='text/javascript' src='/js/index.js' />
         </body>
     </html>)
