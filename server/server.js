@@ -1,6 +1,6 @@
 'use strict';
 require('css-modules-require-hook')({
-  generateScopedName: '[name]__[local]___[hash:base64:5]',
+  generateScopedName: '[name]__[local]___[hash:base64:5]'
 });
 require('babel-register')({
     presets: ['react', 'es2015', 'stage-2']

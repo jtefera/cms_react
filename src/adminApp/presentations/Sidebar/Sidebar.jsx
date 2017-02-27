@@ -1,6 +1,6 @@
 const React = require('react');
 const {Link} = require('react-router');
-const style = require('./Sidebar.css');
+const style = require('./style.css');
 
 const Sidebar = (props) => {
     return (
