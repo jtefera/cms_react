@@ -7,7 +7,7 @@ require('postcss-initial')({
 require('postcss-import'),
 /* enable mixins like Sass/Less */
 require('postcss-mixins')({
-  mixins: require('./src/mixins')
+  mixins: require('./config/src/mixins')
 }),
 /* enable nested css selectors like Sass/Less */
 require('postcss-nested'),
@@ -16,7 +16,7 @@ require('lost'),
 /* require global variables */
 require('postcss-simple-vars')({
   variables: function variables() {
-    return require('./src/variables')
+    return require('./config/src/variables')
   },
   unknown: function unknown(node, name, result) {
     node.warn(result, 'Unknown variable ' + name)

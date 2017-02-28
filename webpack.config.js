@@ -1,39 +1,79 @@
 var path = require('path');
-var postCSSConfig = require('./config/postcss.config');
+//var postCSSConfig = require('./config/postcss.config');
 var srcPath = path.join(__dirname, 'src');
+var ExtractTextWebpack = require('extract-text-webpack-plugin');
+var webpack = require('webpack');
+var MergeFilesWebpack = require('merge-files-webpack-plugin');
 
+var VENDORS = [
+    'react',
+    'react-dom',
+    'react-redux',
+    'react-router',
+    'react-tap-event-plugin',
+    'redux',
+    'redux-thunk',
+    ];
 module.exports = {
     entry: {
-        './public/js/index': './src/pageApp/main.js',
-        './public/js/admin/index': './src/adminApp/main.js',
-        './public/js/login/index': './src/login/main.js'
+        '/': './src/pageApp/main.js',
+        '/admin/': './src/adminApp/main.js',
+        '/login/': './src/login/main.js',
+        '/vendor/': VENDORS
     },
     output: {
-        path: __dirname,
-        filename: '[name].js'
+        path: path.join(__dirname, 'public'),
+        filename: 'js[name]index.js'
     },
-    devtool: 'source-map',
+    //devtool: 'source-map',
     module: {
-        loaders: [{
-                test: /.jsx?$/,
-                loader: 'babel-loader',
+        rules: [
+            {
+                use: 'babel-loader',
                 exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react', 'stage-2'],
-                },
+                test: /\.jsx?$/
             },
             {
-                test: /\.json$/,
-                loader: 'json-loader',
-            },
-            {
-                test: /\.css$/,
-                include: srcPath,
-                loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&camelCase!postcss'
+                use: ExtractTextWebpack.extract({
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                importLoaders: 1,
+                                localIdentName: '[name]__[local]___[hash:base64:5]',
+                                camelCase: true,
+                                context: './'
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+
+                        }
+                    ]
+                }),
+                test: /\.css$/
             }
-        ],
+        ]
+
     },
-    postcss: function () {
-        return postCSSConfig;
-    },
+    plugins: [
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: require('./postcss.config.js')
+            }
+        }),
+        new ExtractTextWebpack('/css/[id].style.css'),
+        new MergeFilesWebpack({
+            filename: '/css/style.css',
+            chunksTest: 'style.css'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: '/vendor/',
+            minChunks: Infinity
+        })
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     filename:
+        // })
+    ]
 };
