@@ -10,9 +10,10 @@ const firebaseAdmin = require('../../shared/firebase-admin');
 
 
 router.get('*', function routerCallback(req, res) {
+    console.log('........................', req.url)
     match({
         routes: require('../router'),
-        location: req.originalUrl,
+        location: '/admin' + req.url,
     }, function matchCallback(error, isRedirect, renderProps){
         if(renderProps) {
             var db = firebaseAdmin.database();

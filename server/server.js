@@ -41,7 +41,7 @@ app.use(sessions({
 app.use('/api', require('./admin/api.js'));
 app.use('/login', loginRouter);
 app.get('/login', require('../src/login/routes/index.js'));
-app.get('/admin', requiredAuth, require('../src/adminApp/routes/index.js'));
+app.use('/admin', requiredAuth, require('../src/adminApp/routes/index.js'));
 app.get('/logout', logoutRouter);
 app.use(require('../src/pageApp/routes/index.jsx'));
 
