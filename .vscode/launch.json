@@ -27,6 +27,21 @@
             "name": "Attach to Chrome",
             "port": 9222,
             "webRoot": "${workspaceRoot}"
+        },
+        {
+            "name": "Launch via NPM",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "npm",
+            "windows": {
+                "runtimeExecutable": "npm.cmd"
+            },
+            "runtimeArgs": [
+                "run-script",
+                "testWP"
+            ],
+            "port": 5858
         }
     ]
 }

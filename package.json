@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "webpack --watch",
     "server": "supervisor server/server.js",
-    "concat-css": "file-merge -i public/**/*.css -o public/bundle.css"
+    "testWP": "node --nolazy --debug-brk=5858 ./node_modules/webpack/bin/webpack"
   },
   "author": "",
   "license": "ISC",

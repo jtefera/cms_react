@@ -66,7 +66,7 @@ module.exports = {
         new ExtractTextWebpack('/css/[id].style.css'),
         new MergeFilesWebpack({
             filename: '/css/style.css',
-            chunksTest: 'style.css'
+            test: 'style.css'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: '/vendor/',
