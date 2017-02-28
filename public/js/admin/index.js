@@ -188,7 +188,12 @@ var PostEditor = function PostEditor(_ref) {
             React.createElement(
                 'label',
                 { htmlFor: 'content' },
-                'Content'
+                'Content ',
+                React.createElement(
+                    'b',
+                    null,
+                    '(Markdown accepted!)'
+                )
             ),
             React.createElement('textarea', {
                 type: 'text',

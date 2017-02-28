@@ -2,6 +2,7 @@ const React = require('react');
 const Link = require('react-router').Link;
 const style = require('./style.css');
 const dateFormatter = require('../../../shared/utils/dateFormatter');
+var ReactMarkdown = require('react-markdown');
 const Post = ({title, author, authorId, date, content, id}) => {
     const authorEl = (author) ? 
         <Link to={'author/' + authorId}>{author}</Link>
@@ -18,7 +19,7 @@ const Post = ({title, author, authorId, date, content, id}) => {
                     {authorEl} {dateFormatter(date) || ''}
                 </h6>
                 <p>
-                    {content}
+                    <ReactMarkdown source={content} />
                 </p>
             </div>
         </div>

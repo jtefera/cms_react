@@ -28,7 +28,7 @@ const PostEditor = ({title, author, content, saveHandler, cancelLink}) => {
                 />
             </div>
             <div className='form-group'>
-                <label htmlFor='content'>Content</label>
+                <label htmlFor='content'>Content <b>(Markdown accepted!)</b></label>
                 <textarea 
                     type='text' 
                     id='content'
