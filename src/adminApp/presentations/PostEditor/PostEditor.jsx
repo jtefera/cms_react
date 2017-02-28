@@ -1,5 +1,6 @@
 const React = require('react');
 const {Link} = require('react-router');
+const TextareaMDPreview = require('../TextareaMDPreview');
 
 const PostEditor = ({title, author, content, saveHandler, cancelLink}) => {
     let titleInput, authorInput, contentInput;
@@ -29,14 +30,14 @@ const PostEditor = ({title, author, content, saveHandler, cancelLink}) => {
             </div>
             <div className='form-group'>
                 <label htmlFor='content'>Content <b>(Markdown accepted!)</b></label>
-                <textarea 
+                <TextareaMDPreview 
                     type='text' 
                     id='content'
-                    ref={(node) => {contentInput = node}}
                     placeholder='Content'
+                    inputRef={(node) => {contentInput = node}}
                     className="form-control"
                     defaultValue={content || ''}
-                    rows='7'
+                    rows='10'
                 />
             </div>
             <button
